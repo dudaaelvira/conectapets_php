@@ -1,0 +1,120 @@
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+/* Fonte geral */
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Variáveis de cor */
+:root {
+    --verde: #CBB927;
+    --amarelo: #ffa300;
+    --laranja: #d95301;
+    --laranjaclaro: #fdd673;
+}
+
+/* Container padrão */
+.container {
+    padding: 0 30px;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: var(--verde); 
+}
+
+/* Cabeçalho */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+/* Logo */
+.logo a {
+    font-size: 40px;
+    font-weight: bold;
+    color:white;
+}
+
+/* Menu */
+.ul {
+    display: flex;
+    align-items: center;
+}
+
+.ul .login {
+    padding: 10px 25px;
+    background-color: white;
+    margin: 0 15px;
+    font-size: 20px;
+    color:var(--verde);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Parte principal */
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+    gap: 20px; /* Adiciona espaço controlado entre texto e imagem */
+}
+
+/* Layout principal horizontal */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 50vh;
+    padding-top: 15vh;
+    margin-inline:10%;
+}
+
+/* Textos principais */
+.row-text {
+    text-align: center;
+    color: var(--laranja);
+    font-size: 28px;
+    margin: 0; /* Evita afastar pelo margin */
+}
+
+/* Imagem */
+.row-image {
+    height:40vh ;
+    width: auto ;
+    
+}
+
+
+.main-img img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Rodapé */
+.background-rodape{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+     background-color: var(--verde);   
+}
+   
+

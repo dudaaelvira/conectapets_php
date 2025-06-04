@@ -1,0 +1,79 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    /*o "none" neste "list-style" vai tirar os pontinhos que ficam em cada lista*/
+    list-style: none;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/*aqui é a declaração de variáveis das cores que vou utilizar*/
+:root {
+    --verde: #CBB927;
+    --amarelo: #ffa300;
+    --laranja: #d95301;
+    --laranjaclaro: #fdd673;
+
+}
+
+/*aqui não funcionou a cor*/
+.background-laranja {
+    background: #FEECCC;
+    width: 100%;
+    height: 150px;
+}
+
+/*classes reutilizáveis*/
+.container {
+    max-width: 1400px;
+    padding: 0 5%;
+    margin: 0 auto;
+}
+
+/*classes do site*/
+/*A Nav é uma tag*/
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+/*Como é uma classe, precisamos do ponto*/
+.logo a {
+    font-size: 40px;
+    /*grossura da fonte*/
+    font-weight: bold;
+}
+
+.logo .parte1 {
+    color: var(--verde);
+}
+
+.logo .parte2 {
+    color: var(--laranja);
+}
+background-adocao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    /* position: relative;*/
+}
+
+.ul .servicos {
+    border: 2px solid var(--verde);
+    border-radius: 10px;
+    padding: 10px 25px;
+    background-color: white;
+    margin: 10px 35px 20px 35px;
+    /* margem em cima, direita, embaixo e esquerda */
+    font-size: 30px;
+    color: var(--verde);
+    width: 300px;
+    justify-content: center;
+}
