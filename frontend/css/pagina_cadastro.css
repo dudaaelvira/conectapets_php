@@ -1,0 +1,182 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    /*o "none" neste "list-style" vai tirar os pontinhos que ficam em cada lista*/
+    list-style: none;
+}
+
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+:root{
+--verde: #CBB927;
+--amarelo: #ffa300;
+--laranja: #d95301;
+--laranjaclaro:#FEECCC;
+
+}
+
+.container{
+    /* max-width: 1400px;
+    padding: 0 5%;
+    margin: 0 auto; */
+    padding: 0 30px;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: white;
+}
+
+.cadastrar {
+    padding: 10px 25px;
+    background-color: var(--verde);
+    margin: 0 15px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.login {
+    padding: 10px 25px;
+    background-color: var(--laranja);
+    margin: 0 15px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    /*aqui não funcionou a centralização da logo*/
+    align-items: center;
+    padding: 20px 0;
+}
+
+/*Como é uma classe, precisamos do ponto*/
+.logo a{
+    font-size: 40px;
+}
+
+.logo .parte1{
+    color: var(--verde);
+    font-size: 40px;
+}
+
+.logo .parte2{
+    color: var(--laranja);
+    font-size: 40px;
+}
+
+main{
+    position: relative;
+    height: 100vh;
+}
+
+.background-login {
+    background-color: #FEECCC; /* o tom de laranja claro*/
+    width: 400px;
+    min-height: 100%; /* altura total da tela */
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.digitacao {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.mensagem-de-erro{
+    color:red;
+    text-align: center;
+}
+
+.mensagem-de-sucesso{
+    color: green;
+    text-align: center;
+}
+.input-text {
+    width: 100%;
+    max-width: 400px; /* Controla o tamanho máximo */
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-text:focus {
+    border-color: #ff6600; /* Cor de destaque ao focar */
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+    background-color: #fffaf5; /* Leve destaque no fundo */
+}
+
+ .container_2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* altura total da tela */
+    list-style: none;
+ }
+
+ main .main-img-esquerda .main-img-direita{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    height: 500px; /* ajuste conforme necessário */
+    background-color: #fdf0da; /* cor de fundo igual ao do site */
+    padding: 0 30px; /* espaço nas laterais */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+ 
+
+ .main-img-esquerda img{
+    width: 650px;
+     /* height: 100%;
+    object-fit: cover;*/ 
+    position: absolute;
+    bottom:0;
+    left: 0;
+    z-index: 2;
+
+ }
+ 
+ .main-img-direita img{
+    width: 600px;
+   /* height: 100%;
+    object-fit: cover;*/ 
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+ }
+
+@media(max-width: 768px) {
+    .main-img-esquerda {
+        display: none;
+    }
+    .main-img-direita {
+        display: none;
+    }
+}
