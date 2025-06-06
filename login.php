@@ -1,29 +1,31 @@
 <?php
-require_once __DIR__ . "/../backend/controlador_usuarios.php";
+/**
+ * Esta acessando a página do banco de dados, 
+ * saindo do frontend com os dois pontinhos, entrando no 
+ * backend e acessando a pasta que quero do banco de dados
+ */
+require_once __DIR__ . "/backend/controlador_usuarios.php";
 
 $mensagemDeErro = "";
-$mensagemDeSucesso = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que guarda informações das requisições http sendo feitas
-    $nome = $_POST["nome"];
     $email = $_POST["email"];
     $senha = $_POST["senha"];
-    $confirmarSenha = $_POST["confirmar_senha"];
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) { //executa se o email é inválido - pois quero mostrar que ta errado
         $mensagemDeErro = "O e-mail está inválido";
     } 
-    elseif($senha !== $confirmarSenha) {
-        $mensagemDeErro = "As senhas estão diferentes";
-    }
-    elseif(realizarCadastro($nome, $email, $senha)) {
-        $mensagemDeSucesso = "Cadastro realizado com sucesso";
-    }
-    else {
-        $mensagemDeErro = "E-mail já cadastrado";
-    }
-}
+    elseif(validarLoginAdmin($email, $senha)) { //verifica se o login foi bem sucedido através das informações do banco de dados
+        session_start();
+        $_SESSION["fez_login"] = $email;
+        header("Location: pagina3_adocao.html"); // link da outra página - é assim no php
+        exit; //interromper para ir para outra página
 
+    } else {
+        $mensagemDeErro = "O e-mail ou senha inválidos, tente novamente"; //informa que o login falhou
+    }
+
+}
 
 ?>
 
@@ -33,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que g
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/pagina_cadastro.css">
+    <link rel="stylesheet" href="css/pagina2_login.css">
     <title>ConectaPets</title>
 </head>
 
@@ -48,8 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que g
                     </a>
                 </div>
                 <div>
-                    <a class="login" href="pagina1_principal.html">Pagina Inicial</a>
-                    <a class="login" href="login.php">Login</a>
+                    <a class="pagina-inicial" href="pagina1_principal.html">Pagina Inicial</a>
                 </div>
             </nav>
         </div>
@@ -57,22 +58,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que g
     <main>
         <div class="background-login">
             <div class="container_2">
-                <form class="digitacao" method="post"> 
-                    <input class="input-text" type="text" name="nome" placeholder="Nome" required>
-                    <input class="input-text" type="text" name="email" placeholder="E-mail" required>
-                    <input class="input-text" type="password" name="senha" placeholder="Senha" required>
-                    <input class="input-text" type="password" name="confirmar_senha" placeholder="Confirmar senha" required>
-                    <input class="cadastrar" type="submit" value="Cadastrar">
+                <form class="digitacao" method="post"> <!--medida de segurança para a senha não ficar mostrando na url-->
+                    <input class="input-text" type="text" name="email" placeholder="E-mail" required >   <!--name para requisição e required para obrigar a preencher os campos - só funcona no input-->
+                    <input class="input-text" type="password" name="senha" placeholder="Senha" required >
+                    <input class="login" type="submit" value="Login"> 
                     <?php
                      if($mensagemDeErro !== "") { //Se a mensagem de erro for diferente de vazio, entao existe um erro e ele vai exibir o usuário o erro
                         echo "<p class=\"mensagem-de-erro\" >$mensagemDeErro</p>";
                      }
-                     if($mensagemDeSucesso !== "") { //Se a mensagem de erro for diferente de vazio, entao existe um erro e ele vai exibir o usuário o erro
-                        echo "<p class=\"mensagem-de-sucesso\" >$mensagemDeSucesso</p>";
-                     }
                     ?>
+                    
+                    <p>Não possui cadastro? <a href="cadastro.php">Cadastre-se</a></p>
                 </form>
-
                 <div class="main-img-esquerda">
                     <img src="img/foto_pets_pagina_login-removebg-preview.png" alt="pets">
                 </div>
