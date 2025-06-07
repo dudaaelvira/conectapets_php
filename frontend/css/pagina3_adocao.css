@@ -1,0 +1,266 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    /*o "none" neste "list-style" vai tirar os pontinhos que ficam em cada lista*/
+    list-style: none;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/*aqui é a declaração de variáveis das cores que vou utilizar*/
+:root {
+    --verde: #CBB927;
+    --amarelo: #ffa300;
+    --laranja: #d95301;
+    --laranjaclaro: #fdd673;
+    --laranja-desabilitado: #e0b89f;
+
+
+}
+
+
+
+
+/* ESTILOS DO CABEÇALHO */
+header {
+    padding-bottom: 16vh;
+}
+
+.container {
+    padding: 0 30px;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: var(--verde); 
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 2vh;
+}
+
+.logo a {
+    font-size: 40px;
+    font-weight: bold;
+    color:white;
+}
+
+.botoes-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.estilo-botao-nav {
+    padding: 10px 25px;
+    background-color: white;
+    margin: 0 15px;
+    font-size: 20px;
+    color:var(--verde);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+/* parte do cadastro do pet */
+
+main {
+    padding-block: 2%;
+    padding-inline: 5%;
+}
+
+.container-cadastro-adocao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    gap: 2vh;
+    padding: 2%;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-color: #1b1b1b;
+    border-style: solid;
+}
+
+.container-cadastro-adocao div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2vw;
+}
+
+.titulo-cadastrar {
+    font-size: 20px;
+    color: var(--verde);
+}
+
+.input-text {
+    width: 100%;
+    max-width: 400px; /* Controla o tamanho máximo */
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-text:focus {
+    border-color: #ff6600; /* Cor de destaque ao focar */
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+    background-color: #fffaf5; /* Leve destaque no fundo */
+}
+
+
+/* parte das informacoes dos pets */
+
+.container_opcoespets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+    justify-content: space-around;
+    align-items: center;
+}
+
+.coluna {
+    background-color: white;
+    margin: 20px;
+    height: 300px;
+    border-radius: 10px;
+    /* cantos arredondados como na segunda imagem */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    /* sombra suave */
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    justify-content: center;
+}
+
+/* Dedica-se ao container da imagem, adquando a imagem ao container*/
+.foto1 {
+    width: 100%;
+    height: 160px;
+    /* altura um pouco maior para caber o cachorro inteiro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Dedica-se a imagem propriamente dita*/
+.foto1 img {
+    /* Garante que a imagem se comporte como um bloco, e não como um texto */
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    /* Mostra a imagem preenchendo o espaço */
+    display: block;
+    /* Garante que a imagem se comporte como um bloco, e não como um texto */
+}
+
+.informacoespet{
+    margin: 4px 0 4px;
+    text-align: left;
+}
+
+.informacoespet .nome {
+    font-size: 18px;
+    /* o bold deixa em negrito */
+    font-weight: bold;
+}
+
+
+
+.mensagem-de-erro{
+    color:red;
+    text-align: center;
+}
+
+.mensagem-de-sucesso{
+    color: green;
+    text-align: center;
+}
+
+.queroadotar-laranja {
+    padding: 6px 16px;
+    font-size: 14px;
+    text-align: center;
+    background-color: var(--laranja);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.queroadotar-verde {
+    padding: 6px 16px;
+    font-size: 14px;
+    text-align: center;
+    background-color: var(--verde);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.queroadotar-laranja-disabled {
+  pointer-events: none;
+  cursor: default;
+  padding: 6px 16px;
+    font-size: 14px;
+    text-align: center;
+    background-color: var(--laranja-desabilitado);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.meu-modal{
+    /*aqui o modal não vai aparecer, pois o "none" deixa ele desativado, ele só vai ativar quando houver o clique*/
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.meu-modal.active {
+    /*aqui o modal aparece por conta do flex*/
+    display: flex;
+}
+
+/*borda da sessão modal de adoção dos pets*/
+.meu-modal-container{
+    background-color: white;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 8px;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+
+
+
+

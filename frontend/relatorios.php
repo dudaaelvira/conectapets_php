@@ -27,7 +27,8 @@
                 <div class="digitacao">
                     <p class="relatorios">Relatórios</p>
                     <a href="relatorios.php" class="disponiveis"> Animais disponíveis </a>
-                    <a href="relatorios.php" class="adotados"> Animais Adotados </a>                   
+                    <a href="relatorios.php" class="adotados"> Animais Adotados </a>    
+                     <a href="relatorios.php" class="tutores"> Tutores cadastrados</a>                   
                 </div>
                 <div class="main-img-esquerda">
                     <img src="img/foto_pets_pagina_login-removebg-preview.png" alt="pets">
@@ -38,3 +39,5 @@
             </div>
         </div>
     </main>
+</body>
+</html>

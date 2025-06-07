@@ -15,29 +15,32 @@
                 <div class="logo">
                     <a href="index.html">
                         <!--A tag span separa a logo em partes-->
-                        <span class="parte1">Conecta</span><span class="parte2">Pets</span>
+                        <span>ConectaPets</span>
                     </a>
                 </div>
-                <ul class="ul">
-                    <li>
-                        <a href="#"> <button class="gestaopets"> Gestão de Pets</button></a>
-                        <p class="textogestao">Cadastro de Pets!</p>
-                    </li>
-                </ul>
+                <div class="botoes-nav">
+                    <a href="#" class="estilo-botao-nav">Tutores</a>
+                    <a href="relatorios.php" class="estilo-botao-nav">Relatórios</a>
+                    <a href="index.php" class="estilo-botao-nav">Sair</a>
+                </div>
             </nav>
-            <div class="background-laranja"></div>
         </div>
     </header>
     <main>
-        <div class="background-adocao">
-            <div class="container_2">
-                <ul class="ul">
-                    <li> <a href="#"> <button class="adote"> Adote um Pet </button></a></li>
-                </ul>
+        <form class="container-cadastro-adocao" method="post">
+            <div>
+                <span class="titulo-cadastrar">Cadastrar Pet</span>
+                <input type="submit" class="queroadotar" value="Cadastrar">
             </div>
-        </div>
-        <!--Kika-->
+            <div>
+                <input type="text" class="input-text" name="nome_pet" placeholder="Nome" required>
+                <input type="text" class="input-text" name="raca_pet" placeholder="Raça" required>
+                <input type="text" class="input-text" name="url_foto_pet" placeholder="Link da Foto" required>
+            </div>
+        </form>
+        
         <div class="container_opcoespets">
+            <!--Kika-->
             <div class="coluna">
                 <div class="foto1">
                     <img src="img/kika-pagina3.webp" alt="kika">

@@ -1,0 +1,62 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    /*o "none" neste "list-style" vai tirar os pontinhos que ficam em cada lista*/
+    list-style: none;
+}
+
+/*aqui é a declaração de variáveis das cores que vou utilizar*/
+:root {
+    --verde: #CBB927;
+    --amarelo: #ffa300;
+    --laranja: #d95301;
+    --laranjaclaro: #fdd673;
+
+}
+
+header {
+    padding-bottom: 16vh;
+}
+
+.container {
+    padding: 0 30px;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: var(--verde); 
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 2vh;
+}
+
+.logo a {
+    font-size: 40px;
+    font-weight: bold;
+    color:white;
+}
+
+.botoes-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.estilo-botao-nav {
+    padding: 10px 25px;
+    background-color: white;
+    margin: 0 15px;
+    font-size: 20px;
+    color:var(--verde);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
