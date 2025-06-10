@@ -1,0 +1,166 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    /*o "none" neste "list-style" vai tirar os pontinhos que ficam em cada lista*/
+    list-style: none;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/*aqui é a declaração de variáveis das cores que vou utilizar*/
+:root {
+    --verde: #CBB927;
+    --amarelo: #ffa300;
+    --laranja: #d95301;
+    --laranjaclaro: #fdd673;
+    --laranja-desabilitado: #e0b89f;
+
+
+}
+
+
+
+
+/* ESTILOS DO CABEÇALHO */
+header {
+    padding-bottom: 16vh;
+}
+
+.container {
+    padding: 0 30px;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: var(--verde); 
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 2vh;
+}
+
+.logo a {
+    font-size: 40px;
+    font-weight: bold;
+    color:white;
+}
+
+.botoes-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.estilo-botao-nav {
+    padding: 10px 25px;
+    background-color: white;
+    margin: 0 15px;
+    font-size: 20px;
+    color:var(--verde);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+/* parte do cadastro do pet */
+
+main {
+    padding-block: 2%;
+    padding-inline: 5%;
+}
+
+.container-cadastro-adocao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    gap: 2vh;
+    padding: 2%;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-color: #1b1b1b;
+    border-style: solid;
+}
+
+.container-cadastro-adocao div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2vw;
+}
+
+.titulo-cadastrar {
+    font-size: 20px;
+    color: var(--verde);
+}
+
+.input-text {
+    width: 100%;
+    max-width: 400px; /* Controla o tamanho máximo */
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-text:focus {
+    border-color: #ff6600; /* Cor de destaque ao focar */
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+    background-color: #fffaf5; /* Leve destaque no fundo */
+}
+
+.mensagem-de-erro{
+    color:red;
+    text-align: center;
+}
+
+.mensagem-de-sucesso{
+    color: green;
+    text-align: center;
+}
+
+.queroadotar-laranja {
+    padding: 6px 16px;
+    font-size: 14px;
+    text-align: center;
+    background-color: var(--laranja);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2vh;
+  border: 1px solid #1b1b1b;
+}
+
+td,
+th {
+  border: 1px solid #1b1b1b;
+  text-align: center; /* Centers inline content (text, inline elements) */
+  vertical-align: middle; /* Vertically centers content */
+  margin-left: auto;
+  margin-right: auto;
+}

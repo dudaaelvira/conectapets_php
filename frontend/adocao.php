@@ -1,12 +1,14 @@
 <?php
 require_once __DIR__ . "/../backend/controlador_pets.php";
+require_once __DIR__ . "/../backend/controlador_tutores.php";
 
 $listaDePets = pegarTodosOsPetsETutores();
+$listaDeTutores = pegarTodosOsTutores();
 
 $mensagemDeErro = "";
 $mensagemDeSucesso = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que guarda informações das requisições http sendo feitas
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["url_foto_pet"])) { //o $_SERVER é uma variável que guarda informações das requisições http sendo feitas
     $nome = $_POST["nome_pet"] ?? null;
     $raca = $_POST["raca_pet"] ?? null;
     $urlFoto = $_POST["url_foto_pet"] ?? null;
@@ -21,6 +23,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que g
         } else {
             $mensagemDeErro = "Erro ao cadastrar o pet";
         }
+    }
+}
+
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["tutor_id"])) {
+    $petId = $_POST["pet_id"] ?? null;
+    $tutorId = $_POST["tutor_id"] ?? null;
+
+    if($petId && $tutorId) {
+        realizarAdocaoPet($petId, $tutorId);
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
     }
 }
 
@@ -47,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que g
                     </a>
                 </div>
                 <div class="botoes-nav">
-                    <a href="#" class="estilo-botao-nav">Tutores</a>
+                    <a href="tutores.php" class="estilo-botao-nav">Tutores</a>
                     <a href="relatorios.php" class="estilo-botao-nav">Relatórios</a>
                     <a href="index.php" class="estilo-botao-nav">Sair</a>
                 </div>
@@ -91,7 +104,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que g
                     </div>
                        <!--faz a condicional para habilitar ou desebilitar o botão da adoção de acordo com a cor-->
                     <?php if($petAtual["tutor_id"] === null): ?>
-                        <a href="#" class="queroadotar-laranja" onclick="abrirModal()">Quero adotar</a>
+                        <!-- quanod clicar no modal, vai aparecer o nome do pet, mas o ID fica invisivel, apenas para ser usando no php -->
+                        <a href="#" class="queroadotar-laranja" onclick="abrirModal('<?= htmlspecialchars($petAtual['pet_nome']) ?>',<?= $petAtual['pet_id']?>)">Quero adotar</a>
                     <?php else: ?>
                         <a href="#" class="queroadotar-laranja-disabled">Quero adotar</a>
                     <?php endif; ?>
@@ -108,9 +122,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que g
 <div id="id-meu-modal" class="meu-modal">
     <form method="post" class="meu-modal-container">
         <h3>Adoção de Pet</h3>
-        <input type="text" value="teste">
-        <input type="text" value="teste2">
-
+        <div>
+            <strong>Nome do pet: </strong>
+            <span id="modal-nome-pet"></span>
+        </div>
+        <input id="modal-id-pet" name="pet_id" type="hidden">
+        <select name="tutor_id" id="modal-select-tutor-id">
+            <option value="">Selecione o Tutor...</option>
+            <?php foreach ($listaDeTutores as $tutorAtual): ?>
+                <option value="<?= $tutorAtual['id'] ?>"><?= htmlspecialchars($tutorAtual['nome']) ?></option>
+            <?php endforeach; ?>  
+        </select>
         <div>
             <button class="queroadotar-verde">Adotar</button>
             <button class="queroadotar-laranja" onclick="fecharModal()">Cancelar</button>
@@ -120,8 +142,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { //o $_SERVER é uma variável que g
 
 <script>
     //esse getelementbyid é para puxar o id que vai identificar a abertura do modal
-    function abrirModal() {
+    function abrirModal(petNome, petId) {
         document.getElementById("id-meu-modal").classList.add("active");
+        document.getElementById("modal-nome-pet").textContent = petNome;
+        document.getElementById("modal-id-pet").value = petId;
     }
 
     function fecharModal() {

@@ -37,4 +37,11 @@ function realizarCadastroPet($nome,$raca,$urlFoto) {
     }
 }
 
+// esta parte é a adoção do pet. Ela recebe o id do pet e o id do tutor para relacionálos no banco de dados
+function realizarAdocaoPet($petId, $tutorId) {
+    $pdo = getDbConnection();
+    $stmt = $pdo->prepare("UPDATE pets SET id_tutor = ? WHERE id = ?");
+    $stmt->execute([$tutorId, $petId]);
+}
+
 ?>
